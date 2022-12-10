@@ -1,9 +1,11 @@
 import * as React from 'react';
+import './App.css';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import CustomizedTimeline from './components/Timeline';
+import Thumbnail from './components/Thumbnail';
 
 const style = {
   position: 'absolute',
@@ -19,12 +21,32 @@ const style = {
 
 export default function App() {
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => {
+    console.log("something");
+    setOpen(true);
+  };
   const handleClose = () => setOpen(false);
+
+  const styles = {
+    projects: {
+      display: 'flex',
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+      alignItems: 'center',
+      alignContent: 'center',
+    },
+  };
 
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <h1>Projects</h1>
+      <div style={styles.projects} onClick={handleOpen}>
+        <Thumbnail title="Thumbnail" image="http://source.unsplash.com/random/1920x1080" />
+        <Thumbnail title="Hello World" image="http://source.unsplash.com/random/1920x1080" />
+        <Thumbnail title="Hi from MLH" image="http://source.unsplash.com/random/1920x1080" />
+        <Thumbnail title="Global Hack Week" image="http://source.unsplash.com/random/1920x1080" />
+      </div>
       <Modal
         open={open}
         onClose={handleClose}
